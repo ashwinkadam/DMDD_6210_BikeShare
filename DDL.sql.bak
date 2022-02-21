@@ -1,5 +1,5 @@
 ----WHY 50BYTES
----- Ashish
+
 CREATE TABLE CUSTOMER (
 CUSTOMER_ID NUMBER(25),
 FIRST_NAME VARCHAR2(50 BYTE) NOT NULL,
@@ -26,23 +26,4 @@ START_DATE DATE,
 END_DATE DATE,
 
 CONSTRAINT DISCOUNT_ID_PK PRIMARY KEY (DISCOUNT_ID));
-
-
-create table customer_address (
-address_id number primary key not null
-line_1 varchar(50) not null
-line_2 varchar(50)
-city varchar(50) not null
-state varchar(50) not null
-zipcode varchar(15) not null
-type varchar (15) not null
-customer_id number not null 
-
-CONSTRAINT check_type
-CHECK (type in ("Home", "Work"))
-  
-CONSTRAINT fk_cust_id 
-foreign key (customer_id)
-references customer(customer_id)
-);
 
