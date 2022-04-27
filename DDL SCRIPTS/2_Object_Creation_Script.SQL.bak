@@ -2391,9 +2391,12 @@ CREATE or REPLACE VIEW ride_frequency_monthly AS
 with data as (SELECT to_char(transaction_date, 'Month') as Monthly
 FROM RIDE_TRANSACTION)
 
-select Monthly,count(*) as most_frequent
+
+
+select Monthly, count(*) as most_frequent
 from data
 group by Monthly;
+
 
 
 
@@ -2408,32 +2411,47 @@ CREATE or REPLACE VIEW ride_frequency_quarterly_cust AS
 with data as (select to_char(transaction_date, 'Month') as Month ,to_char(transaction_date, 'Q') as Quarter
 from RIDE_TRANSACTION)
 
+
+
 select Quarter, count(*) as most_frequent
 from data
 group by Quarter
 ORDER BY QUARTER;
 
+
+
+
+
+
 --------------------weekly------------------------------------------------------------------------------------------
 
+
+
+
 CREATE or REPLACE VIEW ride_frequency_weekly AS
-with data as (SELECT EXTRACT(MONTH FROM TRANSACTION_DATE) as Month, to_char(transaction_date, 'W') as Week
+with data as (SELECT to_char(transaction_date, 'Month') as Month, to_char(transaction_date, 'W') as Week
 FROM RIDE_TRANSACTION)
+
+
 
 select Month, Week, count(*) as most_frequent
 from data
-group by Month, Week
-ORDER BY  MONTH, WEEK, MOST_FREQUENT DESC;
+group by Month, Week;
+
 
 ------------------------------daily------------------------------------------------------
+
+
 
 CREATE or REPLACE VIEW ride_frequency_daily AS
 with data as (SELECT to_char(transaction_date, 'DAY') as Weekday
 FROM RIDE_TRANSACTION)
+
+
+
 select Weekday, count(*) as most_frequent
 from data
-group by weekday
-ORDER BY MOST_FREQUENT DESC;
-
+group by weekday;
 
 
 --------------------------------------------------------Grant permissions---------------------------------------------------------------------------------
