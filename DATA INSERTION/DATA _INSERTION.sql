@@ -4025,3 +4025,4 @@ select * from ride_frequency_monthly;
 select * from ride_frequency_quarterly_cust;
 select * from ride_frequency_weekly;
 select * from ride_frequency_daily;
+SELECT * FROM FEEDBACK_VIEW;
