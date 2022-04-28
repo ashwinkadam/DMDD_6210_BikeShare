@@ -2439,6 +2439,14 @@ group by weekday
 ORDER BY MOST_FREQUENT DESC;
 
 
+------------------------------FEEDBACK------------------------------------------------------
+CREATE or REPLACE VIEW FEEDBACK_VIEW AS
+SELECT RATING, COUNT(RATING) COUNT_RATING
+FROM CUSTOMER_FEEDBACK
+GROUP BY RATING
+ORDER BY RATING DESC,COUNT_RATING DESC;
+
+
 
 --------------------------------------------------------Grant permissions---------------------------------------------------------------------------------
 
